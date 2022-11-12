@@ -6,7 +6,7 @@ export interface AuthState {
 }
 
 export const initialAuthState: AuthState = {
-    loggedIn: false,
+    loggedIn: true,
     token: ''
 }
 
@@ -14,8 +14,11 @@ export function authReducer(state = initialAuthState, action: AuthAction): AuthS
     switch (action.type) {
         case AuthActionTypes.Login_Successfully:
             return {
+                ...state,
                 loggedIn: true,
                 token: action.payload.token
             }
+        default:
+            return state;
     }
 }

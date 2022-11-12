@@ -5,26 +5,41 @@ import { ChatsComponent } from './modules/Chat/chats/chats.component';
 import { LoginComponent } from './modules/Login/login/login.component';
 import { MatchesComponent } from './modules/Matches/matches/matches.component';
 import { MatchingComponent } from './modules/Matching/matching/matching.component';
+import { CreateProfileComponent } from './modules/Profile/create-profile/create-profile.component';
 import { ProfileComponent } from './modules/Profile/profile/profile.component';
+import { IsLoggedInGuard } from './modules/shared/guards/is-logged-in.guard';
 
 const routes: Routes = [{
   path: 'login',
   component: LoginComponent
 }, {
   path: 'matching',
-  component: MatchingComponent
+  component: MatchingComponent,
+  canActivate: [IsLoggedInGuard]
 }, {
   path: 'chat/:id',
-  component: ChatComponent
+  component: ChatComponent,
+  canActivate: [IsLoggedInGuard]
 }, {
   path: 'chats',
-  component: ChatsComponent
+  component: ChatsComponent,
+  canActivate: [IsLoggedInGuard]
 }, {
   path: 'matches',
-  component: MatchesComponent
+  component: MatchesComponent,
+  canActivate: [IsLoggedInGuard]
 }, {
   path: 'profile',
-  component: ProfileComponent
+  component: ProfileComponent,
+  canActivate: [IsLoggedInGuard]
+}, {
+  path: 'create-profile',
+  component: CreateProfileComponent,
+  canActivate: [IsLoggedInGuard]
+}, {
+  path: '**',
+  redirectTo: '/matching',
+  pathMatch: 'full'
 }
 ];
 

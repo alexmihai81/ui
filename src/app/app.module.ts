@@ -12,6 +12,11 @@ import { MatchingComponent } from './modules/Matching/matching/matching.componen
 import { ProfileComponent } from './modules/Profile/profile/profile.component';
 import { LoginComponent } from './modules/Login/login/login.component';
 import { HeaderComponent } from './modules/shared/components/header/header.component';
+import { CreateProfileComponent } from './modules/Profile/create-profile/create-profile.component';
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './app.reducer';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './modules/shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -24,13 +29,17 @@ import { HeaderComponent } from './modules/shared/components/header/header.compo
     MatchingComponent,
     ProfileComponent,
     LoginComponent,
-    HeaderComponent
+    HeaderComponent,
+    CreateProfileComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot(reducers),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
