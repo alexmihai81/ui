@@ -1,1 +1,101 @@
-<p>profile works!</p>
+<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+  <div class="container py-5 h-100">
+    <div class="row">
+
+     <div class="col-sm-8">
+        <div class="card"> 
+          <div>
+            <div class="d-flex justify-content-center mb-4">
+                <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
+                class="rounded-circle" alt="example placeholder" style="width: 180px;" />
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="btn btn-primary btn-rounded btn-sm">
+                    <label class="form-label text-white m-1" for="customFile2">Upload image</label>
+                    <input type="file" class="form-control d-none" id="customFile2" />
+                </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-center">Dog name</h5>
+            <p class="card-text text-center"><small class="text-muted">Profile Details</small></p>
+            <form class="px-md-3">
+  
+              <div class="row">
+                <div class="mb-2">
+                    <label class="form-label" for="name">Name</label>
+                    <input type="text" id="name" class="form-control form-control-sm" />
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="mb-2">
+
+                  <div id="date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                      <label for="example">Birthday</label>
+                      <input placeholder="YYYY-MM-DD" type="text" id="example" class="form-control">
+                      <i class="fas fa-calendar input-prefix"></i>
+                    </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mb-2">
+
+                    <select class="form-select form-control ">
+                        <option value="1" disabled>Specie</option>
+                        <option value="2">Specie1</option>
+                        <option value="3">Specie2</option>
+                        <option value="4">Specie3</option>
+                    </select>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="mb-4">
+                    <select class="form-select form-control">
+                        <option value="1" disabled>Breed</option>
+                        <option value="2">Breed1</option>
+                        <option value="3">Breed2</option>
+                        <option value="4">Breed3</option>
+                    </select>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-success btn-sm mb-3">Update Profile</button>
+
+            </form>  
+          </div>
+        </div>
+     </div>
+
+     <div class="col-sm-4 row" >
+       <div class="card bg-transparent border-3">
+         <div class="card-body">
+           <div class="card-selection-size col-11 shadow-lg">
+                <select class="form-select m-sm-2 shadow-sm" aria-label="Select dog section">
+                    <option selected>Select one of your dogs</option>
+                    <option value="1">Dog1</option>
+                    <option value="2">Dog2</option>
+                    <option value="3">Dog3</option>
+                  </select>
+           </div>
+         </div>
+         <div class="card-footer bg-transparent">
+            <div class="mb-4">
+                <div class="btn btn-primary btn-rounded btn-sm shadow-sm col-11 m-sm-2">
+                    <label class="form-label text-white m-1" for="RegisterDog">Register dog</label>
+                </div>
+                <div class="btn btn-danger btn-rounded btn-sm shadow-sm col-11 m-sm-2">
+                    <label class="form-label text-white m-1" for="deleteProfile">Delete Profile</label>
+                </div>
+            </div>
+        </div>
+    </div>
+     </div>
+
+    </div>
+  </div>
+</section>
+

@@ -23,10 +23,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [
-              "src/assets/cards.js"
+              "src/assets/cards.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           },
           "configurations": {
@@ -101,6 +103,6 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "a6b40ff9-3947-4f69-bcee-35f7a96159f6"
   }
 }
