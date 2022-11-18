@@ -1,1 +1,25 @@
-<p>matching works!</p>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="matching.component.css">
+</head>
+
+<body>
+<div class="tinder">
+  <div class="tinder--cards" *ngFor="let card of AllCards">
+    <div class="tinder--card">
+      <img src="{{ card.src }}" alt="">
+      <h3>{{card.name}}</h3>
+      <p>{{card.info}}</p>
+    </div>
+  </div>
+
+  <div class="tinder--buttons">
+    <button id="nope" (click)="swipeCard(false)"><i class="fa fa-remove">NOPE</i></button>
+    <button id="love" (click)="swipeCard(true)"><i class="fa fa-heart">LIKE</i></button>
+  </div>
+</div>
+
+</body>
+</html>
