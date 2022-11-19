@@ -1,1 +1,10 @@
-<p>login works!</p>
+<div>
+    <p>Welcome back! Login to your account</p>
+    <div [formGroup]="loginForm">
+        <input type="text" formControlName="username"
+            [ngClass]="{'invalid':form['username'].invalid && form['username'].touched}" />
+        <input type="password" formControlName="password"
+            [ngClass]="{'invalid':form['password'].invalid && form['password'].touched}" />
+        <button (click)="onSubmit()">Login</button>
+    </div>
+</div>

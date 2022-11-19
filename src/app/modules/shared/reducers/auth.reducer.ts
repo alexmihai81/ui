@@ -6,7 +6,7 @@ export interface AuthState {
 }
 
 export const initialAuthState: AuthState = {
-    loggedIn: true,
+    loggedIn: false,
     token: ''
 }
 

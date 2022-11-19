@@ -15,8 +15,10 @@ import { HeaderComponent } from './modules/shared/components/header/header.compo
 import { CreateProfileComponent } from './modules/Profile/create-profile/create-profile.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './app.reducer';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './modules/shared/interceptors/auth.interceptor';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -33,13 +35,26 @@ import { AuthInterceptor } from './modules/shared/interceptors/auth.interceptor'
     CreateProfileComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
+    NotifierModule.withConfig({
+      position: {
+        horizontal: { position: 'middle' },
+        vertical: { position: 'top' },
+      },
+      behaviour: {
+        autoHide: 1000
+      }
+    })
   ],
   providers: [
+    HttpClient,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  exports: [NotifierModule],
 })
 export class AppModule { }
