@@ -1,82 +1,84 @@
 <section class="h-100 h-custom" style="background-color: #8fc4b7;">
-    <div class="container py-5 h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-lg-8 col-xl-6">
-          <div class="card rounded-3">
-            <div class="card-body p-4 p-md-5">
-              <h3 class="mb-md-5 px-md-3">Registration Info</h3>
-  
-              <form class="px-md-3">
-  
-                <div class="row">
-                    <div class="mb-4">
-                        <label class="form-label" for="name">Name</label>
-                        <input type="text" id="name" class="form-control" />
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="mb-4">
-    
-                      <div id="date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
-                          <label for="example">Birthday</label>
-                          <input placeholder="YYYY-MM-DD" type="text" id="example" class="form-control">
-                          <i class="fas fa-calendar input-prefix"></i>
-                        </div>
-    
-                    </div>
-                  </div>
-  
-                <div class="row">
-                  <div class="mb-4">
-  
-                   <p class="mb-2 pb-1">Gender: </p>
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-8 col-xl-6">
+        <div class="card rounded-3">
+          <div class="card-body p-4 p-md-5">
+            <h3 class="mb-md-5 px-md-3">Registration Info</h3>
 
-                   <div class="form-check form-check-inline">
-                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                       value="option1"/>
-                     <label class="form-check-label" for="femaleGender">Female</label>
-                   </div>
+            <div [formGroup]="form" class="px-md-3">
 
-                   <div class="form-check form-check-inline">
-                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                       value="option2" />
-                     <label class="form-check-label" for="maleGender">Male</label>
-                  </div>
-  
-                  </div>
+              <div class="row">
+                <div class="mb-4">
+                  <label class="form-label" for="name">Name</label>
+                  <input type="text" id="name" class="form-control" formControlName="name"
+                    [ngClass]="{invalid:form.controls['name'].invalid && form.controls['name'].touched}" />
                 </div>
+              </div>
 
-                <div class="row">
-                    <div class="mb-4">
-  
-                        <select class="form-select form-control ">
-                            <option value="1" disabled>Specie</option>
-                            <option value="2">Specie1</option>
-                            <option value="3">Specie2</option>
-                            <option value="4">Specie3</option>
-                        </select>
-                    </div>
+              <div class="row">
+                <div class="mb-4">
+
+                  <div id="date-picker" class="md-form md-outline input-with-post-icon datepicker" inline="true">
+                    <label for="example">Birthday</label>
+                    <input placeholder="YYYY-MM-DD" type="text" id="example" class="form-control"
+                      formControlName="birthDay"
+                      [ngClass]="{invalid:form.controls['birthDay'].invalid && form.controls['birthDay'].touched}">
+                    <i class="fas fa-calendar input-prefix"></i>
+                  </div>
+
                 </div>
-                
-                <div class="row">
-                    <div class="mb-4">
-                        <select class="form-select form-control">
-                            <option value="1" disabled>Breed</option>
-                            <option value="2">Breed1</option>
-                            <option value="3">Breed2</option>
-                            <option value="4">Breed3</option>
-                        </select>
-                    </div>
+              </div>
+
+              <div class="row">
+                <div class="mb-4">
+
+                  <p class="mb-2 pb-1">Gender: </p>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="femaleGender" formControlName="gender"
+                      value="female"
+                      [ngClass]="{invalid:form.controls['gender'].invalid && form.controls['gender'].touched}" />
+                    <label class="form-check-label" for="femaleGender">Female</label>
+                  </div>
+
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="maleGender" formControlName="gender" value="male"
+                      [ngClass]="{invalid:form.controls['gender'].invalid && form.controls['gender'].touched}" />
+                    <label class="form-check-label" for="maleGender">Male</label>
+                  </div>
+
                 </div>
-  
-                <button type="submit" class="btn btn-success btn-lg mb-1">Create</button>
-  
-              </form>
-  
+              </div>
+
+              <div class="row">
+                <div class="mb-4">
+
+                  <select class="form-select form-control" formControlName="species"
+                    [ngClass]="{invalid:form.controls['species'].invalid && form.controls['species'].touched}">
+                    <option [value]="null" hidden disabled>Species</option>
+                    <option *ngFor="let s of species" [value]="s.id">{{s.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="mb-4">
+                  <select class="form-select form-control" formControlName="breed"
+                    [ngClass]="{invalid:form.controls['breed'].invalid && form.controls['breed'].touched}">
+                    <option [value]="null" hidden disabled>Breed</option>
+                    <option *ngFor="let breed of breeds" [value]="breed.id">{{breed.name}}</option>
+                  </select>
+                </div>
+              </div>
+
+              <button class="btn btn-success btn-lg mb-1" (click)="onSubmit()">Create</button>
+
             </div>
+
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
