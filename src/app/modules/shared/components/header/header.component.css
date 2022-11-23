@@ -10,7 +10,7 @@ body {
 
 .header {
   overflow: hidden;
-  background-color: #FFD1DC;
+  background: linear-gradient(90deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 50%, rgba(255,101,91,1) 100%);
   padding: 20px 10px;
 }
 
@@ -28,22 +28,24 @@ body {
 
 /* logo link */
 .header a.logo {
-  font-size: 25px;
+  color: #86b9f7;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 34px;
   font-weight: bold;
-  /*background-color: hotpink;*/
-  /*color: white;*/
+  letter-spacing: -2px;
+  line-height: 1;
+  text-align: center;
+  text-shadow: 0 0 8px black, 0 0 8px black;
 }
 
 /* Change the background color on mouse-over */
 .header a:hover {
-  background-color: hotpink;
-  color: black;
+  color: rgba(255,88,100,1)
 }
 
 /* Style the active link */
 .header a:active {
-  background-color: hotpink;
-  color: white;
+  color: rgba(255,88,100,1)
 }
 
 

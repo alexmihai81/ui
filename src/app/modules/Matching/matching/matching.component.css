@@ -5,7 +5,7 @@
 }
 
 body {
-  background: linear-gradient(0deg, rgb(253, 38, 122), rgb(253, 207, 219)) no-repeat;
+  background: linear-gradient(90deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 50%, rgba(255,101,91,1) 100%);
   overflow: hidden;
   font-family: sans-serif;
 }
@@ -95,7 +95,6 @@ body {
 .tinder--buttons i {
   font-size: 20px;
   vertical-align: middle;
-
 }
 
 .fa-heart {
