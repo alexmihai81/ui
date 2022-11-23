@@ -1,10 +1,10 @@
-export class ProfileRequest {
+export class Profile {
     id: number;
     name: string;
-    birthday: string;
-    gender: string;
     breedId: number;
     speciesId: number;
-    userId: number;
+    birthday: string;
     selected: boolean;
+    gender: string;
+    userId: number;
 }

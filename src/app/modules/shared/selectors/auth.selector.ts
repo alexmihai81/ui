@@ -12,3 +12,8 @@ export const authDetails = createSelector(
     selectAuthState,
     auth => auth
 )
+
+export const profileId = createSelector(
+    selectAuthState,
+    auth => auth.profileId
+)

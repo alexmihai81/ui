@@ -1,7 +1,8 @@
 import { Action } from "@ngrx/store";
 
 export enum AuthActionTypes {
-    Login_Successfully = '[Login] Login Successfully'
+    Login_Successfully = '[Login] Login Successfully',
+    Profile = '[Login] Profile'
 }
 
 export class LoginToken implements Action {
@@ -9,4 +10,9 @@ export class LoginToken implements Action {
     constructor(public payload: { token: string, userId: number }) { }
 }
 
-export type AuthAction = LoginToken;
+export class ProfileIdUpdate implements Action {
+    readonly type = AuthActionTypes.Profile;
+    constructor(public payload: { profileId: number; }) { }
+}
+
+export type AuthAction = LoginToken | ProfileIdUpdate;
