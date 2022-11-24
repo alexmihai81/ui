@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from './app.reducer';
-import { LoginToken } from './modules/shared/actions/auth.actions';
-import { AuthState } from './modules/shared/reducers/auth.reducer';
 import { isLoggedIn } from './modules/shared/selectors/auth.selector';
 import { LoginService } from './modules/shared/services/login.service';
 

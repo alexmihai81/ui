@@ -2,12 +2,16 @@ import { AuthAction, AuthActionTypes } from "../actions/auth.actions"
 
 export interface AuthState {
     loggedIn: boolean,
-    token: string
+    token: string,
+    userId: number,
+    profileId: number
 }
 
 export const initialAuthState: AuthState = {
     loggedIn: false,
-    token: ''
+    token: '',
+    userId: -1,
+    profileId: -1
 }
 
 export function authReducer(state = initialAuthState, action: AuthAction): AuthState {
@@ -16,7 +20,13 @@ export function authReducer(state = initialAuthState, action: AuthAction): AuthS
             return {
                 ...state,
                 loggedIn: true,
-                token: action.payload.token
+                token: action.payload.token,
+                userId: action.payload.userId
+            }
+        case AuthActionTypes.Profile:
+            return {
+                ...state,
+                profileId: action.payload.profileId
             }
         default:
             return state;
