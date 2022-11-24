@@ -1,7 +1,7 @@
-<section class="h-100 h-custom" style="background-color: #8fc4b7;">
+<section class="h-100 h-custom" style="background: linear-gradient(90deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 50%, rgba(255,101,91,1) 100%);
+">
   <div class="container py-5 h-100">
     <div class="row">
-
       <div class="col-sm-8">
         <div class="card">
           <div>
@@ -17,9 +17,9 @@
             </div>
           </div>
           <div class="card-body" [formGroup]="updateForm">
-            <h5 class="card-title text-center">{{selectedProfile?.name ? selectedProfile.name : 'Name'}}</h5>
+            <h5 class="card-title text-center">{{selectedProfile?.name ? selectedProfile.name : 'Pet name'}}</h5>
             <p class="card-text text-center"><small class="text-muted">Profile Details</small></p>
-            <form class="px-md-3">
+            <div [formGroup]="updateForm" class="px-md-3">
 
               <div class="row">
                 <div class="mb-2">
@@ -43,7 +43,6 @@
 
               <div class="row">
                 <div class="mb-2">
-
                   <select class="form-select form-control" formControlName="species">
                     <option [value]="null" hidden disabled>Specie</option>
                     <option *ngFor="let s of species" [value]="s.id">{{s.name}}</option>
@@ -62,7 +61,7 @@
 
               <button (click)="onSubmit()" class="btn btn-success btn-sm mb-3">Update Profile</button>
 
-            </form>
+            </div>
           </div>
         </div>
       </div>
