@@ -1,19 +1,14 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="matching.component.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
 <div class="tinder">
-  <div class="tinder--cards" *ngFor="let card of AllCards">
-    <div class="tinder--card">
-      <img src="{{ card.src }}" alt="">
-      <h3>{{card.name}}</h3>
-      <p>{{card.info}}</p>
+  <div class="tinder--cards">
+    <div *ngIf="!hide && displayProfile" #ref class="tinder--card">
+      <img [src]="displayProfile?.url">
+      <h3>{{displayProfile.name}}</h3>
+      <p>{{displayProfile.birthday}}</p>
     </div>
+  </div>
+
+  <div *ngIf="!displayProfile">
+    <h3>No more possible matches</h3>
   </div>
 
   <div class="tinder--buttons">
@@ -21,6 +16,3 @@
     <button id="love" (click)="swipeCard(true)"><i class="fa fa-heart"></i></button>
   </div>
 </div>
-
-</body>
-</html>

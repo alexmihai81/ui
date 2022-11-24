@@ -7,4 +7,5 @@ export class Profile {
     selected: boolean;
     gender: string;
     userId: number;
+    url: string;
 }

@@ -80,7 +80,6 @@ export class ProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.updateForm.invalid);
     if (!this.updateForm.invalid) {
       const request = new ProfileRequest();
       request.id = this.selectedProfile.id;

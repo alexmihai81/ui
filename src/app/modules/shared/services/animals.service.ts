@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { url } from "../constants/urls.constants";
 import { Breed } from "../models/breed.model";
 import { ProfileRequest } from "../models/profile-request.model";
+import { Profile } from "../models/profile.model";
 import { Species } from "../models/species.model";
 
 @Injectable({
@@ -42,5 +43,9 @@ export class AnimalsService {
 
     deleteProfile(id: number, userId: number): Observable<any> {
         return this.http.delete(`${url}/delete_animal/${userId}/${id}`);
+    }
+
+    getPossibleMatches(id: number): Observable<Profile[]> {
+        return this.http.get<Profile[]>(`${url}/get_matching/${id}`);
     }
 }

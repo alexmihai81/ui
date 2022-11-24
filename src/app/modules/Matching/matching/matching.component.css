@@ -1,18 +1,17 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
-body {
-  background: linear-gradient(90deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 50%, rgba(255,101,91,1) 100%);
+.tinder {
+  background: linear-gradient(90deg, rgba(253, 41, 123, 1) 0%, rgba(255, 88, 100, 1) 50%, rgba(255, 101, 91, 1) 100%);
   overflow: hidden;
   font-family: sans-serif;
-}
-
-.tinder {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 90px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -39,7 +38,7 @@ body {
   display: inline-block;
   width: 90vw;
   max-width: 400px;
-  height: 50vh;
+  height: 60vh;
   background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;

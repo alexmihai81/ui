@@ -1,4 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { NotifierService } from 'angular-notifier';
+import { AppState } from 'src/app/app.reducer';
+import { Profile } from '../../shared/models/profile.model';
+import { authDetails } from '../../shared/selectors/auth.selector';
+import { AnimalsService } from '../../shared/services/animals.service';
 
 @Component({
   selector: 'app-matching',
@@ -7,59 +13,91 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 })
 export class MatchingComponent implements OnInit {
 
-  @ViewChild('myCard') myCard: any;
-  @ViewChild('myAllCards') myAllCards: any;
-
-  AllCards: Array<any> = [
+  @ViewChild('ref') ref: ElementRef;
+  hide = false;
+  id: number;
+  displayProfile: Profile;
+  allProfiles: Profile[] = [
     {
-      src: "https://placeimg.com/600/300/people",
+      url: "https://placeimg.com/600/300/people",
       name: "Name4",
-      info: "Info4",
+      gender: "male",
+      breedId: 1,
+      speciesId: 1,
+      birthday: "2022-11-11",
+      selected: true,
+      id: 1,
+      userId: 1
+
     },
     {
-      src: "https://placeimg.com/600/300/tech",
+      url: "https://placeimg.com/600/300/tech",
       name: "Name3",
-      info: "Info3",
+      gender: "male",
+      breedId: 1,
+      speciesId: 1,
+      birthday: "2022-11-11",
+      selected: true,
+      id: 2,
+      userId: 2
     },
     {
-      src: "https://placeimg.com/600/300/nature",
+      url: "https://placeimg.com/600/300/nature",
       name: "Name2",
-      info: "Info2",
+      gender: "male",
+      breedId: 1,
+      speciesId: 1,
+      birthday: "2022-11-11",
+      selected: true,
+      id: 3,
+      userId: 3
     }, {
-      src: "https://placeimg.com/600/300/animals",
+      url: "https://placeimg.com/600/300/animals",
       name: "Name1",
-      info: "Info1",
+      gender: "male",
+      breedId: 1,
+      speciesId: 1,
+      birthday: "2022-11-11",
+      selected: true,
+      id: 4,
+      userId: 4
     }
   ];
 
-  constructor() {
-  }
+  constructor(private store: Store<AppState>, private animalsService: AnimalsService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
+    this.displayProfile = this.allProfiles[0];
+    this.store.select(authDetails).subscribe((details) => {
+      this.id = details.profileId;
+      this.animalsService.getPossibleMatches(this.id).subscribe((response) => {
+        if (response.length > 0) {
+          this.allProfiles = response;
+        }
+      }, () => {
+        this.notifier.notify('error', 'Error! Please contact administrator!');
+      })
+    })
   }
 
   swipeCard(button: boolean): void {
-    var cards = document.querySelectorAll('.tinder--card:not(.removed)');
     var moveOutWidth = document.body.clientWidth * 1.5;
 
-    this.myCard = cards[0];
-    this.myCard.classList.add('removed');
-
     if (button) {
-      this.myCard.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
+      this.ref.nativeElement.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
     } else {
-      this.myCard.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
+      this.ref.nativeElement.style.transform = 'translate(-' + moveOutWidth + 'px, -100px) rotate(30deg)';
     }
 
-    var allCards = document.querySelectorAll('.tinder--card');
-    var newCards = this.myAllCards.querySelectorAll('.tinder--card:not(.removed)');
-    newCards.forEach(function (card, index) {
-      card.style.zIndex = allCards.length - index;
-      card.style.transform = 'scale(' + (20 - index) / 20 + ') translateY(-' + 30 * index + 'px)';
-      card.style.opacity = (10 - index) / 10;
-    });
-
-
+    setTimeout(() => {
+      this.hide = true;
+      this.ref.nativeElement.style.transform = 'translate(0)';
+      setTimeout(() => {
+        this.allProfiles.splice(0, 1);
+        this.displayProfile = this.allProfiles[0];
+        this.hide = false
+      }, 100)
+    }, 150);
   }
 
 
