@@ -19,8 +19,8 @@ export class MatchingComponent implements OnInit {
   displayProfile: Profile;
   allProfiles: Profile[] = [
     {
-      url: "https://placeimg.com/600/300/people",
-      name: "Name4",
+      url: "https://placeimg.com/600/300/animals",
+      name: "Name1",
       gender: "male",
       breedId: 1,
       speciesId: 1,
@@ -32,7 +32,7 @@ export class MatchingComponent implements OnInit {
     },
     {
       url: "https://placeimg.com/600/300/tech",
-      name: "Name3",
+      name: "Name2",
       gender: "male",
       breedId: 1,
       speciesId: 1,
@@ -43,7 +43,7 @@ export class MatchingComponent implements OnInit {
     },
     {
       url: "https://placeimg.com/600/300/nature",
-      name: "Name2",
+      name: "Name3",
       gender: "male",
       breedId: 1,
       speciesId: 1,
@@ -52,8 +52,8 @@ export class MatchingComponent implements OnInit {
       id: 3,
       userId: 3
     }, {
-      url: "https://placeimg.com/600/300/animals",
-      name: "Name1",
+      url: "https://placeimg.com/600/300/people",
+      name: "Name4",
       gender: "male",
       breedId: 1,
       speciesId: 1,
