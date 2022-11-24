@@ -93,14 +93,14 @@ body {
 }
 
 .tinder--buttons i {
-  font-size: 20px;
+  font-size: 27px;
   vertical-align: middle;
 }
 
 .fa-heart {
-  color: #ff98e2;
+  color: #00e194;
 }
 
 .fa-remove {
-  color: #616262;
+  color: #ff7a66;
 }

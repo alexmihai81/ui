@@ -7,7 +7,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .header {
   overflow: hidden;
   background: linear-gradient(90deg, rgba(253,41,123,1) 0%, rgba(255,88,100,1) 50%, rgba(255,101,91,1) 100%);
@@ -17,13 +16,14 @@ body {
 /* header links */
 .header a {
   float: left;
-  color: black;
+  color: #86b9f7;
   text-align: center;
   padding: 12px;
   text-decoration: none;
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  text-shadow: 0 0 4px black, 0 0 4px black;
 }
 
 /* logo link */
@@ -33,7 +33,6 @@ body {
   font-size: 34px;
   font-weight: bold;
   letter-spacing: -2px;
-  line-height: 1;
   text-align: center;
   text-shadow: 0 0 8px black, 0 0 8px black;
 }
