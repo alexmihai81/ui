@@ -98,7 +98,7 @@ export class MatchingComponent implements OnInit {
 
   swipeCard(button: boolean): void {
     var moveOutWidth = document.body.clientWidth * 1.5;
-
+    this.animalsService.setLike(this.id, this.displayProfile.id, button).subscribe();
     if (button) {
       this.ref.nativeElement.style.transform = 'translate(' + moveOutWidth + 'px, -100px) rotate(-30deg)';
     } else {
