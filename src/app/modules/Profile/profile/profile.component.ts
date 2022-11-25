@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
       this.breeds = response;
     })
     this.store.select(authDetails).subscribe(details => {
-      if (!this.firstSet) {
+      if (this.firstSet) {
         this.userId = details.userId;
         this.animalsService.getAllAnimalsForUser(this.userId).subscribe((response) => {
           this.allProfiles = response;
