@@ -80,7 +80,7 @@ export class MatchingComponent implements OnInit {
       this.id = details.profileId;
       this.animalsService.getPossibleMatches(this.id).subscribe((response) => {
         if (response.length > 0) {
-          response.forEach(p => { p.url = this.allProfiles[this.getRandomInt(0, 4)].url })
+          response.forEach(p => { p.url = this.allProfiles[0].url })
           this.allProfiles = response;
           this.displayProfile = this.allProfiles[0];
         }
