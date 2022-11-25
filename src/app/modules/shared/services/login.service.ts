@@ -3,21 +3,25 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { Observable } from "rxjs";
 import { AppState } from "src/app/app.reducer";
-import { LoginToken } from "../actions/auth.actions";
+import { LoginToken, ProfileIdUpdate } from "../actions/auth.actions";
 import { url } from "../constants/urls.constants";
 import { LoginRequest } from "../models/login-request.model";
+import { AnimalsService } from "./animals.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class LoginService {
-    constructor(private http: HttpClient, private store: Store<AppState>) { }
+    constructor(private http: HttpClient, private store: Store<AppState>, private animalsService: AnimalsService,) { }
 
     localLogin() {
         if (localStorage.length > 0) {
             const token = localStorage.getItem('token');
             const userId = +localStorage.getItem('userId');
-            this.store.dispatch(new LoginToken({ token, userId }))
+            this.store.dispatch(new LoginToken({ token, userId }));
+            this.animalsService.getSelectedAnimal(userId).subscribe((response) => {
+                this.store.dispatch(new ProfileIdUpdate({ profileId: response.id }));
+            });
         }
     }
 
