@@ -1,9 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NotifierService } from 'angular-notifier';
+import { VirtualTimeScheduler } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
 import { Profile } from '../../shared/models/profile.model';
-import { authDetails } from '../../shared/selectors/auth.selector';
+import { authDetails, profileId } from '../../shared/selectors/auth.selector';
 import { AnimalsService } from '../../shared/services/animals.service';
 
 @Component({
@@ -17,6 +18,7 @@ export class MatchingComponent implements OnInit {
   hide = false;
   id: number;
   displayProfile: Profile;
+  loadMore = true;
   allProfiles: Profile[] = [
     {
       url: "https://placeimg.com/600/300/people",
@@ -74,6 +76,9 @@ export class MatchingComponent implements OnInit {
         if (response.length > 0) {
           this.allProfiles = response;
         }
+        if (response.length < 10) {
+          this.loadMore = false;
+        }
       }, () => {
         this.notifier.notify('error', 'Error! Please contact administrator!');
       })
@@ -98,6 +103,16 @@ export class MatchingComponent implements OnInit {
         this.hide = false
       }, 100)
     }, 150);
+    if (this.allProfiles.length < 10 && this.loadMore) {
+      this.animalsService.getPossibleMatches(this.id).subscribe((response: any) => {
+        if (response.length > 0) {
+          this.allProfiles = [...this.allProfiles, response];
+        }
+        if (response.length < 10) {
+          this.loadMore = false;
+        }
+      })
+    }
   }
 
 
