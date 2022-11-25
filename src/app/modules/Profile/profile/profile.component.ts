@@ -58,14 +58,16 @@ export class ProfileComponent implements OnInit {
       this.breeds = response;
     })
     this.store.select(authDetails).subscribe(details => {
-      this.userId = details.userId;
-      this.animalsService.getAllAnimalsForUser(this.userId).subscribe((response) => {
-        this.allProfiles = response;
-        this.selectedProfile = this.allProfiles?.find(p => p.selected === true);
-        this.updateUpdateForm();
-        this.updateSelectForm();
-        this.firstSet = false;
-      });
+      if (!this.firstSet) {
+        this.userId = details.userId;
+        this.animalsService.getAllAnimalsForUser(this.userId).subscribe((response) => {
+          this.allProfiles = response;
+          this.selectedProfile = this.allProfiles?.find(p => p.selected === true);
+          this.updateUpdateForm();
+          this.updateSelectForm();
+          this.firstSet = false;
+        });
+      }
     });
     this.selectForm.controls["selectedProfile"].valueChanges.subscribe((value) => {
       if (!this.firstSet) {
