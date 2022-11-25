@@ -78,18 +78,21 @@ export class MatchingComponent implements OnInit {
     this.displayProfile = this.allProfiles[0];
     this.store.select(authDetails).subscribe((details) => {
       this.id = details.profileId;
-      this.animalsService.getPossibleMatches(this.id).subscribe((response) => {
-        if (response.length > 0) {
-          response.forEach(p => { p.url = this.allProfiles[0].url })
-          this.allProfiles = response;
-          this.displayProfile = this.allProfiles[0];
-        }
-        if (response.length < 10) {
-          this.loadMore = false;
-        }
-      }, () => {
-        this.notifier.notify('error', 'Error! Please contact administrator!');
-      })
+      if (this.id > 0) {
+        this.animalsService.getPossibleMatches(this.id).subscribe((response) => {
+          if (response.length > 0) {
+            response.forEach(p => { p.url = this.allProfiles[0].url })
+            this.allProfiles = response;
+            this.displayProfile = this.allProfiles[0];
+          }
+          if (response.length < 10) {
+            this.loadMore = false;
+          }
+
+        }, () => {
+          this.notifier.notify('error', 'Error! Please contact administrator!');
+        });
+      }
     })
   }
 

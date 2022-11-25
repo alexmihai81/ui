@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { NotifierService } from 'angular-notifier';
 import { AppState } from 'src/app/app.reducer';
+import { ProfileIdUpdate } from '../../shared/actions/auth.actions';
 import { Breed } from '../../shared/models/breed.model';
 import { ProfileRequest } from '../../shared/models/profile-request.model';
 import { Profile } from '../../shared/models/profile.model';
@@ -74,6 +75,7 @@ export class ProfileComponent implements OnInit {
           const index = this.allProfiles.findIndex(p => p.id === response.id);
           this.allProfiles[index] = response;
           this.updateUpdateForm();
+          this.store.dispatch(new ProfileIdUpdate({ profileId: value }));
         })
       }
     })
