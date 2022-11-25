@@ -53,8 +53,8 @@ export class ProfileComponent implements OnInit {
     this.animalsService.getSpecies().subscribe((response) => {
       this.species = response;
     })
-    this.animalsService.getBreeds().subscribe((resopnse) => {
-      this.breeds = resopnse;
+    this.animalsService.getBreeds().subscribe((response) => {
+      this.breeds = response;
     })
     this.store.select(authDetails).subscribe(details => {
       this.userId = details.userId;
