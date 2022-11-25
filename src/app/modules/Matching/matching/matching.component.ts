@@ -68,13 +68,21 @@ export class MatchingComponent implements OnInit {
 
   constructor(private store: Store<AppState>, private animalsService: AnimalsService, private notifier: NotifierService) { }
 
+  getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  }
+
   ngOnInit(): void {
     this.displayProfile = this.allProfiles[0];
     this.store.select(authDetails).subscribe((details) => {
       this.id = details.profileId;
       this.animalsService.getPossibleMatches(this.id).subscribe((response) => {
         if (response.length > 0) {
+          response.forEach(p => { p.url = this.allProfiles[this.getRandomInt(0, 4)].url })
           this.allProfiles = response;
+          this.displayProfile = this.allProfiles[0];
         }
         if (response.length < 10) {
           this.loadMore = false;
