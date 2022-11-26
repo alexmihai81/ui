@@ -7,4 +7,5 @@ export class ProfileRequest {
     speciesId: number;
     userId: number;
     selected: boolean;
+    url?: string;
 }
