@@ -6,13 +6,14 @@
         <div class="card">
           <div>
             <div class="d-flex justify-content-center mb-4">
-              <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg" class="rounded-circle"
-                alt="example placeholder" style="width: 180px;" />
+              <img
+                [src]="selectedProfile?.url ? selectedProfile.url : 'https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg'"
+                class="rounded-circle" alt="example placeholder" style="width: 180px;" />
             </div>
             <div class="d-flex justify-content-center">
               <div class="btn btn-primary btn-rounded btn-sm">
-                <label class="form-label text-white m-1" for="customFile2">Upload image</label>
-                <input type="file" class="form-control d-none" id="customFile2" />
+                <label class="form-label text-white m-1" for="customFile2">Change image</label>
+                <input type="file" class="form-control d-none" id="customFile2" (change)="onFileChanged($event)" />
               </div>
             </div>
           </div>

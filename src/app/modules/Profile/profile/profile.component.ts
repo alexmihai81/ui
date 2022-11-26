@@ -93,6 +93,7 @@ export class ProfileComponent implements OnInit {
       request.breedId = +this.updateForm.controls['breed'].value;
       request.speciesId = +this.updateForm.controls['species'].value;
       request.userId = this.userId;
+      request.url = this.selectedProfile.url;
       request.selected = this.selectedProfile.selected;
       this.animalsService.updateAnimal(request).subscribe((response: any) => {
         this.selectedProfile = response;
@@ -113,5 +114,14 @@ export class ProfileComponent implements OnInit {
       this.updateSelectForm();
       this.notifier.notify('success', "Profile deleted successfully!");
     });
+  }
+
+  onFileChanged(event) {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event2) => {
+      this.selectedProfile.url = '' + reader.result;
+    }
   }
 }

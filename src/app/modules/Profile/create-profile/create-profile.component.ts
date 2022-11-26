@@ -21,7 +21,7 @@ export class CreateProfileComponent implements OnInit {
   breeds: Breed[];
   form: FormGroup;
   userId: number;
-
+  url: string = undefined;
   constructor(private animalsService: AnimalsService, private fb: FormBuilder, private notifier: NotifierService, private store: Store<AppState>, private router: Router) {
     this.form = fb.group({
       breed: [null, [Validators.required]],
@@ -45,7 +45,7 @@ export class CreateProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.form.invalid) {
+    if (!this.form.invalid && this.url) {
       const request = new ProfileRequest();
       request.name = this.form.controls['name'].value;
       request.birthday = this.form.controls['birthDay'].value;
@@ -53,6 +53,7 @@ export class CreateProfileComponent implements OnInit {
       request.breedId = +this.form.controls['breed'].value;
       request.speciesId = +this.form.controls['species'].value;
       request.userId = this.userId;
+      request.url = this.url;
       this.animalsService.saveAnimal(request).subscribe((resopnse) => {
         this.notifier.notify('success', 'Profile created successfully!');
         this.router.navigate(['profile']);
@@ -61,7 +62,18 @@ export class CreateProfileComponent implements OnInit {
       });
     } else {
       this.form.markAllAsTouched();
+      if (!this.url) {
+        this.notifier.notify('error', 'Image is mandatory!');
+      }
     }
   }
 
+  onFileChanged(event) {
+    const file = event.target.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = (event2) => {
+      this.url = '' + reader.result;
+    }
+  }
 }
