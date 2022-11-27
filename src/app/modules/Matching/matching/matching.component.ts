@@ -19,7 +19,8 @@ export class MatchingComponent implements OnInit {
   id: number;
   displayProfile: Profile;
   loadMore = true;
-  allProfiles: Profile[] = [
+  allProfiles: Profile[];
+  /* [
     {
       url: "https://placeimg.com/600/300/animals",
       name: "Name1",
@@ -64,12 +65,11 @@ export class MatchingComponent implements OnInit {
       id: 4,
       userId: 4
     }
-  ];
+  ]; */
 
   constructor(private store: Store<AppState>, private animalsService: AnimalsService, private notifier: NotifierService) { }
 
   ngOnInit(): void {
-    this.displayProfile = this.allProfiles[0];
     this.store.select(authDetails).subscribe((details) => {
       this.id = details.profileId;
       if (this.id > 0) {
