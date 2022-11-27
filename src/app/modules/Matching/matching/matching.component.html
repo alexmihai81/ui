@@ -5,10 +5,11 @@
       <h3>{{displayProfile.name}}</h3>
       <p>{{displayProfile.birthday}}</p>
     </div>
-  </div>
 
-  <div *ngIf="!displayProfile">
-    <h3>No more possible matches</h3>
+    <div *ngIf="!displayProfile" class="tinder--card">
+      <h2>No more possible matches.</h2>
+      <h2>Try again later!</h2>
+    </div>
   </div>
 
   <div class="tinder--buttons">

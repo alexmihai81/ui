@@ -38,7 +38,6 @@
                     <input placeholder="YYYY-MM-DD" type="text" id="example" class="form-control"
                       formControlName="birthDay"
                       [ngClass]="{invalid:form.controls['birthDay'].invalid && form.controls['birthDay'].touched}">
-                    <i class="fas fa-calendar input-prefix"></i>
                   </div>
 
                 </div>
@@ -48,7 +47,6 @@
                 <div class="mb-4">
 
                   <p class="mb-2 pb-1">Gender: </p>
-
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="femaleGender" formControlName="gender"
                       value="female"
@@ -68,6 +66,7 @@
               <div class="row">
                 <div class="mb-4">
 
+                  <label for="example">Species</label>
                   <select class="form-select form-control" formControlName="species"
                     [ngClass]="{invalid:form.controls['species'].invalid && form.controls['species'].touched}">
                     <option [value]="null" hidden disabled>Species</option>
@@ -78,6 +77,7 @@
 
               <div class="row">
                 <div class="mb-4">
+                  <label for="example">Breed</label>
                   <select class="form-select form-control" formControlName="breed"
                     [ngClass]="{invalid:form.controls['breed'].invalid && form.controls['breed'].touched}">
                     <option [value]="null" hidden disabled>Breed</option>
@@ -86,7 +86,9 @@
                 </div>
               </div>
 
-              <button class="btn btn-success btn-lg mb-1" (click)="onSubmit()">Create</button>
+              <div class="d-flex justify-content-center">
+                <button class="btn btn-success btn-lg mb-1" (click)="onSubmit()">Create</button>
+              </div>
 
             </div>
 

@@ -35,17 +35,18 @@
 }
 
 .tinder--card {
+  background: white;
   display: inline-block;
   width: 90vw;
   max-width: 400px;
   height: 60vh;
-  background: #FFFFFF;
   padding-bottom: 40px;
   border-radius: 8px;
   overflow: hidden;
   position: absolute;
   will-change: transform;
   transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px #86b9f7;
 }
 
 .tinder--card img {
@@ -54,17 +55,30 @@
 }
 
 .tinder--card h3 {
+  color: #86b9f7;
   margin-top: 32px;
-  font-size: 32px;
+  font-size: 40px;
   padding: 0 16px;
   pointer-events: none;
+  text-shadow: 0 0 2px black, 0 0 2px black;
+}
+
+.tinder--card h2 {
+  color: #86b9f7;
+  margin-top: 60px;
+  font-size: 30px;
+  padding: 0 16px;
+  pointer-events: none;
+  text-shadow: 0 0 2px black, 0 0 2px black;
 }
 
 .tinder--card p {
+  color: #86b9f7;
   margin-top: 24px;
   font-size: 20px;
   padding: 0 16px;
   pointer-events: none;
+  text-shadow: 0 0 2px black, 0 0 2px black;
 }
 
 .tinder--buttons {
