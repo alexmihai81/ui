@@ -49,7 +49,15 @@ export class AnimalsService {
         return this.http.get<Profile[]>(`${url}/get_matching/${id}`);
     }
 
-    setLike(id1: number, id2: number, like: boolean): Observable<any>{
-      return this.http.post(`${url}/like/animals`, {idAnimal1: id1, idAnimal2: id2, like});
+    setLike(id1: number, id2: number, like: boolean): Observable<any> {
+        return this.http.post(`${url}/like/animals`, { idAnimal1: id1, idAnimal2: id2, like });
+    }
+
+    getMatches(id: number): Observable<Profile[]> {
+        return this.http.get<Profile[]>(`${url}/get_matches/${id}`);
+    }
+
+    deleteMatch(id: number, profileId: number): Observable<void> {
+        return this.http.get<void>(`${url}/delete_match/${id}/${profileId}`);
     }
 }

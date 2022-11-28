@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/app.reducer';
+import { Profile } from '../../shared/models/profile.model';
+import { authDetails } from '../../shared/selectors/auth.selector';
+import { AnimalsService } from '../../shared/services/animals.service';
 
 @Component({
   selector: 'app-matches',
@@ -7,9 +12,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchesComponent implements OnInit {
 
-  constructor() { }
+  matches: Profile[] = [];
+  currentId: number;
+
+  constructor(private animalsService: AnimalsService, private store: Store<AppState>) { }
 
   ngOnInit(): void {
+    this.store.select(authDetails).subscribe(details => {
+      if (details.profileId > 0) {
+        this.currentId = details.profileId;
+        this.animalsService.getMatches(this.currentId).subscribe(response => {
+          this.matches = response;
+        })
+      }
+    })
+  }
+
+  remove(index: number) {
+    this.matches.splice(index, 1);
   }
 
 }

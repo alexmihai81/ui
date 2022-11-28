@@ -22,6 +22,7 @@ export class CreateProfileComponent implements OnInit {
   form: FormGroup;
   userId: number;
   url: string = undefined;
+
   constructor(private animalsService: AnimalsService, private fb: FormBuilder, private notifier: NotifierService, private store: Store<AppState>, private router: Router) {
     this.form = fb.group({
       breed: [null, [Validators.required]],

@@ -19,7 +19,7 @@ export class MatchingComponent implements OnInit {
   id: number;
   displayProfile: Profile;
   loadMore = true;
-  allProfiles: Profile[];
+  allProfiles: Profile[] = [];
   /* [
     {
       url: "https://placeimg.com/600/300/animals",
@@ -90,6 +90,7 @@ export class MatchingComponent implements OnInit {
   }
 
   swipeCard(button: boolean): void {
+    if (this.allProfiles.length == 0) return;
     var moveOutWidth = document.body.clientWidth * 1.5;
     this.animalsService.setLike(this.id, this.displayProfile.id, button).subscribe();
     if (button) {

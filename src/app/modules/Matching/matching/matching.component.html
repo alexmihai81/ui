@@ -1,7 +1,8 @@
 <div class="tinder">
   <div class="tinder--cards">
     <div *ngIf="!hide && displayProfile" #ref class="tinder--card">
-      <img [src]="displayProfile?.url">
+      <img
+        [src]="displayProfile ? displayProfile.url : 'https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg'">
       <h3>{{displayProfile.name}}</h3>
       <p>{{displayProfile.birthday}}</p>
     </div>

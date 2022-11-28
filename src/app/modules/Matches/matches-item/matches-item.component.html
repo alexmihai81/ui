@@ -1,1 +1,9 @@
-<p>matches-item works!</p>
+<div class="match">
+    <img [src]="profile ? profile.url : 'https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg'" />
+    <p>{{profile.name}}</p>
+
+    <div class="tinder--buttons">
+        <button (click)="deleteMatch()"><i class="fa fa-remove"></i></button>
+        <button (click)="chat()"><i class="fa fa-chat"></i></button>
+    </div>
+</div>
