@@ -60,4 +60,12 @@ export class AnimalsService {
     deleteMatch(id: number, profileId: number): Observable<void> {
         return this.http.get<void>(`${url}/delete_match/${id}/${profileId}`);
     }
+
+    getChats(id: number): Observable<any> {
+        return this.http.get<any>(`${url}/getChats/${id}`);
+    }
+
+    createChat(id: number): Observable<number> {
+        return this.http.get<number>(`${url}/create_chat/${id}`);
+    }
 }

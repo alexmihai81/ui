@@ -1,1 +1,5 @@
-<p>chats-item works!</p>
+<div (click)="chat()">
+    <img class="chat-image" [src]="chatInfo?.url" />
+    <p>{{chatInfo ? chatInfo.name : 'Moderated'}}</p>
+    <p> {{chatInfo?.lastMessage}}</p>
+</div>

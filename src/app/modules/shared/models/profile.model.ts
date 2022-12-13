@@ -8,4 +8,5 @@ export class Profile {
     gender: string;
     userId: number;
     url: string;
+    matchId: number;
 }

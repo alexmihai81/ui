@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chats-item',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatsItemComponent implements OnInit {
 
-  constructor() { }
+  @Input() chatInfo: any;
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  chat() {
+    this.router.navigate(["chat", this.chatInfo.chatId])
   }
 
 }

@@ -86,8 +86,8 @@
                 <label class="form-label text-white m-1" for="RegisterDog">Register a new
                   animal</label>
               </div>
-              <div class="btn btn-danger btn-rounded btn-sm shadow-sm col-11 m-sm-2" *ngIf="allProfiles?.length > 1">
-                <label class="form-label text-white m-1" for="deleteProfile" (click)="deleteProfile()">Delete
+              <div class="btn btn-danger btn-rounded btn-sm shadow-sm col-11 m-sm-2" (click)="deleteProfile()" *ngIf="allProfiles?.length > 1">
+                <label class="form-label text-white m-1" for="deleteProfile">Delete
                   Profile</label>
               </div>
             </div>
