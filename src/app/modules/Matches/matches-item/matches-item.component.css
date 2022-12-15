@@ -1,8 +1,78 @@
+.match {
+  background: linear-gradient(90deg, rgba(253, 41, 123, 1) 0%, rgba(255, 88, 100, 1) 50%, rgba(255, 101, 91, 1) 100%);
+  overflow: hidden;
+  font-family: sans-serif;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: opacity 0.1s ease-in-out;
+  padding: 10px;
+}
+
 img {
     height: 200px;
     width: auto;
 }
 
-.match {
-    padding: 10px;
+.tinder--cards {
+  text-align: center;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 0;
+}
+
+.tinder--card {
+  background: white;
+  display: inline-block;
+  padding-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 8px 8px #86b9f7;
+}
+
+.tinder--card p {
+  color: #86b9f7;
+  margin-top: 24px;
+  font-size: 20px;
+  padding: 0 16px;
+  pointer-events: none;
+  text-shadow: 0 0 2px black, 0 0 2px black;
+}
+
+.tinder--buttons {
+  flex: 0 0 100px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.tinder--buttons button {
+  border-radius: 50%;
+  line-height: 60px;
+  width: 60px;
+  border: 0;
+  background: #FFFFFF;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.tinder--buttons button:focus {
+  outline: 0;
+}
+
+.button {
+  size: 1000px;
+}
+
+.tinder--buttons i {
+  font-size: 27px;
+  vertical-align: middle;
+}
+
+.fa-remove {
+  color: #ff7a66;
+}
+
+.fa-comments {
+  color: #00e194;
 }

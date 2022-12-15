@@ -1,9 +1,13 @@
 <div class="match">
-    <img [src]="profile ? profile.url : 'https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg'" />
-    <p>{{profile.name}}</p>
+  <div class="tinder--cards">
+    <div class="tinder--card">
+      <img [src]="profile ? profile.url : 'https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg'" />
+      <p>{{profile.name}}</p>
+    </div>
 
     <div class="tinder--buttons">
         <button (click)="deleteMatch()"><i class="fa fa-remove"></i></button>
-        <button (click)="chat()"><i class="fa fa-chat"></i></button>
+        <button (click)="chat()"><i class="fa fa-comments"></i></button>
     </div>
+  </div>
 </div>
