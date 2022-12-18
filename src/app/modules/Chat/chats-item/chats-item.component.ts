@@ -16,7 +16,7 @@ export class ChatsItemComponent implements OnInit {
   }
 
   chat() {
-    this.router.navigate(["chat", this.chatInfo.chatId])
+    this.router.navigate(["chat"], { queryParams: { id: this.chatInfo.chatId } });
   }
 
 }

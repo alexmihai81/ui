@@ -24,7 +24,7 @@ export class MatchesItemComponent {
 
   chat() {
     this.animalsService.createChat(this.profile.matchId).subscribe(chatId => {
-      this.router.navigate(["chat", chatId]);
+      this.router.navigate(["chat"], { queryParams: { id: chatId } });
     })
   }
 

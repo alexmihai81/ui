@@ -68,4 +68,10 @@ export class AnimalsService {
     createChat(id: number): Observable<number> {
         return this.http.get<number>(`${url}/create_chat/${id}`);
     }
+    getMessages(id: number): Observable<any> {
+        return this.http.get<any>(`${url}/get_messages/${id}`);
+    }
+    sendMessage(chatId: number, animalId: number, message: string): Observable<void> {
+        return this.http.post<void>(`${url}/send_message`, { chatId, animalId, message });
+    }
 }

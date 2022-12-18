@@ -17,7 +17,7 @@ const routes: Routes = [{
   component: MatchingComponent,
   canActivate: [IsLoggedInGuard]
 }, {
-  path: 'chat/:id',
+  path: 'chat',
   component: ChatComponent,
   canActivate: [IsLoggedInGuard]
 }, {
