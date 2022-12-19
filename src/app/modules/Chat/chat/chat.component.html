@@ -1,9 +1,9 @@
-<div>
-    <div>
-        <p *ngFor="let message of messages"
+<div class="chat">
+    <div class="messages">
+        <p class="message" *ngFor="let message of messages"
             [ngClass]="{left:message.from !== profileId, right: message.from === profileId}"> {{message.text}}</p>
     </div>
-    <div [formGroup]="form">
+    <div class="form" [formGroup]="form">
         <input formControlName="message" />
         <button (click)="submit()"> Send</button>
     </div>
