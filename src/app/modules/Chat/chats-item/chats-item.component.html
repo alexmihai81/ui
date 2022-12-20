@@ -1,5 +1,9 @@
-<div (click)="chat()">
+<div class="chat" (click)="chat()">
+  <div class="chat-info-image">
     <img class="chat-image" [src]="chatInfo?.url" />
-    <p>{{chatInfo ? chatInfo.name : 'Moderated'}}</p>
-    <p> {{chatInfo?.lastMessage}}</p>
+  </div>
+  <div class="chat-info-text">
+    <p class="chat-name">{{chatInfo ? chatInfo.name : 'Moderated'}}</p>
+    <p class="chat-lastMessage"> {{chatInfo?.lastMessage}}</p>
+  </div>
 </div>
