@@ -1,5 +1,5 @@
 <div class="matches">
     <app-matches-item *ngFor="let match of matches; let i = index" [profile]="match" [id]="currentId"
         (deletedMatch)="remove(i)"></app-matches-item>
-    <p *ngIf="matches.length == 0">You don't have any matches yet!</p>
+    <p *ngIf="matches.length == 0 && !loading">You don't have any matches yet!</p>
 </div>

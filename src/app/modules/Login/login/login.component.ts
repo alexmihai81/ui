@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { LoginToken } from '../../shared/actions/auth.actions';
+import { LoginToken, ProfileIdUpdate } from '../../shared/actions/auth.actions';
 import { LoginRequest } from '../../shared/models/login-request.model';
 import { LoginService } from '../../shared/services/login.service';
 import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
 import { isLoggedIn } from '../../shared/selectors/auth.selector';
+import { AnimalsService } from '../../shared/services/animals.service';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private store: Store<AppState>, private notifier: NotifierService, private router: Router) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private store: Store<AppState>, private notifier: NotifierService, private router: Router, private animalsService: AnimalsService) {
     this.loginForm = fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
@@ -44,6 +45,9 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token', response.token);
         localStorage.setItem('userId', response.userId.toString());
         this.store.dispatch(new LoginToken({ token: response.token, userId: response.userId }));
+        this.animalsService.getSelectedAnimal(response.userId).subscribe((response) => {
+          this.store.dispatch(new ProfileIdUpdate({ profileId: response.id }));
+        });
         this.router.navigate(['matching']);
 
       }, (error) => {
