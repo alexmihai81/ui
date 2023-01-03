@@ -13,15 +13,17 @@ export class ChatsComponent implements OnInit {
 
   chatsInfo: any;
   profileId: number;
+  loading = false;
   constructor(private store: Store<AppState>, private animalsService: AnimalsService) { }
 
   ngOnInit(): void {
     this.store.select(authDetails).subscribe((authDetails) => {
       this.profileId = authDetails.profileId;
       if (this.profileId > 0) {
+        this.loading = true;
         this.animalsService.getChats(this.profileId).subscribe(response => {
           this.chatsInfo = response;
-        })
+        }).add(() => this.loading = false);
       }
     })
   }

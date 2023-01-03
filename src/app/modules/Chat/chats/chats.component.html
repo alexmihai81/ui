@@ -1,3 +1,4 @@
 <div class="chats">
     <app-chats-item class="chat" [chatInfo]="chatInfo" *ngFor="let chatInfo of chatsInfo"></app-chats-item>
+    <p *ngIf="chatsInfo.length == 0 && !loading">You don't have any chats yet!</p>
 </div>
