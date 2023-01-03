@@ -11,7 +11,7 @@ import { AnimalsService } from '../../shared/services/animals.service';
 })
 export class ChatsComponent implements OnInit {
 
-  chatsInfo: any;
+  chatsInfo: any[] = [];
   profileId: number;
   loading = false;
   constructor(private store: Store<AppState>, private animalsService: AnimalsService) { }
