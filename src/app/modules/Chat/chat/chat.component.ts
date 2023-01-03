@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
+import { Message } from '../../shared/models/message.model';
 import { authDetails } from '../../shared/selectors/auth.selector';
 import { AnimalsService } from '../../shared/services/animals.service';
 
@@ -14,7 +15,7 @@ import { AnimalsService } from '../../shared/services/animals.service';
 export class ChatComponent implements OnInit {
 
   profileId: number;
-  messages = [];
+  messages: Message[] = [];
   form: FormGroup;
 
   constructor(private store: Store<AppState>, private animalsService: AnimalsService, private route: ActivatedRoute, private fb: FormBuilder) {
@@ -25,11 +26,14 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.select(authDetails).subscribe(details => {
-      this.profileId = details.profileId;
+      if (details.profileId > 0) {
+        this.profileId = details.profileId;
+      }
     });
     this.animalsService.getMessages(this.route.snapshot.queryParams['id']).subscribe((messages => {
       this.messages = messages;
     }));
+
   }
 
   submit() {

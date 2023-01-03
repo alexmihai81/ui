@@ -77,7 +77,7 @@ export class ProfileComponent implements OnInit {
           const index = this.allProfiles.findIndex(p => p.id === response.id);
           this.allProfiles[index] = response;
           this.updateUpdateForm();
-          this.store.dispatch(new ProfileIdUpdate({ profileId: value }));
+          this.store.dispatch(new ProfileIdUpdate({ profileId: +value }));
         })
       }
     })

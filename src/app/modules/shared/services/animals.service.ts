@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { url } from "../constants/urls.constants";
 import { Breed } from "../models/breed.model";
+import { Message } from "../models/message.model";
 import { ProfileRequest } from "../models/profile-request.model";
 import { Profile } from "../models/profile.model";
 import { Species } from "../models/species.model";
@@ -68,8 +69,8 @@ export class AnimalsService {
     createChat(id: number): Observable<number> {
         return this.http.get<number>(`${url}/create_chat/${id}`);
     }
-    getMessages(id: number): Observable<any> {
-        return this.http.get<any>(`${url}/get_messages/${id}`);
+    getMessages(id: number): Observable<Message[]> {
+        return this.http.get<Message[]>(`${url}/get_messages/${id}`);
     }
     sendMessage(chatId: number, animalId: number, message: string): Observable<void> {
         return this.http.post<void>(`${url}/send_message`, { chatId, animalId, message });

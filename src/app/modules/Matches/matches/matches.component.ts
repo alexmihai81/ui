@@ -25,7 +25,7 @@ export class MatchesComponent implements OnInit {
         this.currentId = details.profileId;
         this.animalsService.getMatches(this.currentId).subscribe(response => {
           this.matches = response;
-        })
+        }).add(() => this.loading = false)
       }
     }).add(() => this.loading = false)
   }
