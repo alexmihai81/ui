@@ -2,7 +2,8 @@ import { Action } from "@ngrx/store";
 
 export enum AuthActionTypes {
     Login_Successfully = '[Login] Login Successfully',
-    Profile = '[Login] Profile'
+    Profile = '[Login] Profile',
+    Logout = '[Login] Logout'
 }
 
 export class LoginToken implements Action {
@@ -15,4 +16,10 @@ export class ProfileIdUpdate implements Action {
     constructor(public payload: { profileId: number; }) { }
 }
 
-export type AuthAction = LoginToken | ProfileIdUpdate;
+export class Logout implements Action {
+  readonly type = AuthActionTypes.Logout;
+  constructor(public payload: {token: string, userId: number, profileId: number}) {
+  }
+}
+
+export type AuthAction = LoginToken | ProfileIdUpdate | Logout;

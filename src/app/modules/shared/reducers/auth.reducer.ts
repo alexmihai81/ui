@@ -28,6 +28,14 @@ export function authReducer(state = initialAuthState, action: AuthAction): AuthS
                 ...state,
                 profileId: action.payload.profileId
             }
+      case AuthActionTypes.Logout:
+        return {
+          ...state,
+          loggedIn: false,
+          token: '',
+          userId: -1,
+          profileId: -1
+        }
         default:
             return state;
     }
