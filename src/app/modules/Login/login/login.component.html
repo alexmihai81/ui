@@ -2,12 +2,12 @@
     <img class="logo" src="https://cdn-icons-png.flaticon.com/512/4716/4716521.png">
     <p>AniPair</p>
     <div [formGroup]="loginForm">
-        <input class="input" type="text" formControlName="username"
+        <input class="input" type="text" formControlName="username" id="username"
             [ngClass]="{'invalid':form['username'].invalid && form['username'].touched}"
             placeholder="username"/>
-        <input class="input" type="password" formControlName="password"
+        <input class="input" type="password" formControlName="password" id="password"
             [ngClass]="{'invalid':form['password'].invalid && form['password'].touched}"
             placeholder="password"/>
-        <button (click)="onSubmit()">Login</button>
+        <button (click)="onSubmit()" id="login">Login</button>
     </div>
 </div>
